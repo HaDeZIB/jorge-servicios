@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jorge Servicios Integrados</title>
+<meta name="description" content="Mantenimiento y reparación a domicilio: refrigeradores, lavadoras, secadoras, minisplits, vitrinas y cámaras de refrigeración en Monterrey. Agenda por WhatsApp.">
+<meta name="theme-color" content="#0b4fa8">
+<meta property="og:title" content="Jorge Servicios Integrados · Refrigeración y línea blanca">
+<meta property="og:description" content="La solución para tu hogar, negocio y oficina. Servicio a domicilio en Monterrey — agenda por WhatsApp.">
+<meta property="og:image" content="{{URL}}img/og.jpg">
+<meta property="og:url" content="{{URL}}">
+<meta property="og:type" content="profile">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#eef5fd; --card:#ffffff; --line:#d7e6f7;
+  --blue:#1565d8; --navy:#0b2a55; --deep:#0b4fa8; --ice:#dff0ff; --cyan:#19b4e6;
+  --hot:#ff6a3d; --wa:#25d366; --text:#0f1f38; --muted:#5b6f8c;
+  --mono:'Share Tech Mono', ui-monospace, monospace;
+  --sans:'Manrope', system-ui, -apple-system, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100svh;overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+  background-image:radial-gradient(1200px 600px at 50% -200px,#cfe6ff 0%,transparent 70%)}
+a{color:inherit;text-decoration:none}
+#snow{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.card{position:relative;z-index:1;max-width:440px;margin:0 auto;padding:22px 16px 40px;
+  padding-top:max(22px,env(safe-area-inset-top))}
+
+/* ---------- MINISPLIT ---------- */
+.ac{position:relative;margin:4px auto 0;width:100%;max-width:360px}
+.ac-body{position:relative;height:104px;border-radius:22px 22px 30px 30px;
+  background:linear-gradient(180deg,#ffffff 0%,#f3f7fc 70%,#e4ecf6 100%);
+  box-shadow:0 18px 40px -18px rgba(11,42,85,.45),inset 0 -6px 0 #dbe5f1,inset 0 2px 0 #fff;
+  border:1px solid #d5e1ef;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.ac-brand{display:flex;align-items:center;gap:10px}
+.ac-brand img{width:42px;height:42px;border-radius:12px}
+.ac-brand b{display:block;font-size:13px;font-weight:800;letter-spacing:.08em;color:var(--navy)}
+.ac-brand small{display:block;font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--muted)}
+.disp{font:30px var(--mono);color:#9fb3cc;background:#0d1b2e;border-radius:10px;padding:4px 10px;min-width:92px;
+  text-align:right;transition:color .4s,text-shadow .4s}
+.disp sup{font-size:14px;vertical-align:top;margin-left:2px}
+.on .disp{color:var(--cyan);text-shadow:0 0 10px rgba(25,180,230,.8)}
+.hot .disp{color:var(--hot);text-shadow:0 0 10px rgba(255,106,61,.7)}
+.led{position:absolute;right:22px;bottom:16px;width:6px;height:6px;border-radius:50%;background:#c5d2e2}
+.on .led{background:#34e07a;box-shadow:0 0 8px #34e07a}
+.flap{position:absolute;left:18px;right:18px;bottom:-4px;height:14px;border-radius:0 0 18px 18px;
+  background:linear-gradient(180deg,#d9e4f1,#c4d3e5);transform-origin:top;transition:transform .8s cubic-bezier(.3,1.4,.5,1)}
+.on .flap{transform:perspective(200px) rotateX(-55deg)}
+.air{display:block;width:100%;height:120px;margin-top:-2px;opacity:0;transition:opacity .8s}
+.on .air{opacity:1}
+.air path{fill:none;stroke:url(#airg);stroke-width:3;stroke-linecap:round;stroke-dasharray:14 22;animation:flow 1.1s linear infinite}
+.air path:nth-child(2n){animation-duration:1.4s;stroke-width:2}
+.air path:nth-child(3n){animation-duration:.9s}
+@keyframes flow{to{stroke-dashoffset:-72}}
+
+.remote{display:flex;align-items:center;gap:10px;margin:-92px auto 0;position:relative;z-index:2;
+  padding:10px 18px 10px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;
+  font:700 14px var(--sans);color:var(--navy);box-shadow:0 8px 24px -10px rgba(11,42,85,.4)}
+.remote .pw{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#e9eff7;color:var(--muted);transition:.3s}
+.on .remote .pw{background:var(--blue);color:#fff;box-shadow:0 0 0 6px rgba(21,101,216,.15)}
+.remote svg{width:18px;height:18px}
+.remote:active{transform:scale(.97)}
+.remote:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+/* ---------- IDENTIDAD ---------- */
+.id{text-align:center;margin-top:22px}
+.kicker{font:clamp(11px,3.3vw,13px) var(--mono);letter-spacing:.14em;white-space:nowrap;text-transform:uppercase;color:var(--blue)}
+h1{margin-top:6px;font-size:clamp(34px,10vw,44px);font-weight:800;line-height:1.02;letter-spacing:-.02em;color:var(--navy)}
+h1 span{display:block;background:linear-gradient(90deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{margin-top:10px;font-size:16px;color:var(--muted);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:#fff;
+  border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--navy)}
+.chip svg{width:14px;height:14px;color:var(--blue)}
+
+/* ---------- BOTONES ---------- */
+.cta{margin-top:22px;display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:18px;
+  background:linear-gradient(135deg,#1fbf5b,#14a24a);color:#fff;box-shadow:0 14px 30px -12px rgba(20,162,74,.7);transition:transform .15s}
+.cta:active{transform:scale(.98)}
+.cta .ic{flex:none;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center}
+.cta .ic svg{width:26px;height:26px}
+.cta b{display:block;font-size:19px;font-weight:800}
+.cta small{display:block;font-size:13px;opacity:.9}
+.cta .go{margin-left:auto;font-size:24px;font-weight:800}
+
+.pads{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pad{display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;background:var(--card);
+  border:1px solid var(--line);box-shadow:0 6px 18px -12px rgba(11,42,85,.35);transition:transform .12s,border-color .2s}
+.pad:hover,.pad:focus-visible{border-color:var(--blue);outline:none}
+.pad:active{transform:scale(.97)}
+.pad .i{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--ice);color:var(--blue)}
+.pad .i svg{width:20px;height:20px}
+.pad b{display:block;font-size:15px;font-weight:800}
+.pad small{display:block;font-size:12px;color:var(--muted)}
+
+/* ---------- SECCIONES ---------- */
+.panel{margin-top:20px;padding:18px 16px;border-radius:20px;background:rgba(255,255,255,.86);border:1px solid var(--line);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 10px 30px -20px rgba(11,42,85,.4)}
+.panel h2{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.panel .sub{font-size:13px;color:var(--muted);margin-top:2px}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.svc div{position:relative;padding:14px 12px;border-radius:14px;background:linear-gradient(180deg,#f7fbff,#edf5fe);border:1px solid var(--line);overflow:hidden}
+.svc svg{width:30px;height:30px;color:var(--blue)}
+.svc b{display:block;margin-top:8px;font-size:14px;font-weight:800;line-height:1.2}
+.svc small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.svc .wide{grid-column:1/-1;display:flex;align-items:center;gap:12px}
+.svc .wide b{margin-top:0}
+.svc div::after{content:"";position:absolute;right:-18px;top:-18px;width:54px;height:54px;border-radius:50%;
+  background:radial-gradient(circle,rgba(25,180,230,.18),transparent 70%)}
+
+.brands{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.brands span{padding:8px 12px;border-radius:10px;background:#fff;border:1px solid var(--line);font-weight:800;font-size:14px;color:var(--navy)}
+
+.steps{list-style:none;margin-top:12px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start;padding:10px 0;counter-increment:s}
+.steps li::before{content:counter(s);width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+  background:var(--blue);color:#fff;font-weight:800}
+.steps b{display:block;font-size:15px}
+.steps small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+
+.gal{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-top:12px;scrollbar-width:none}
+.gal::-webkit-scrollbar{display:none}
+.gal figure{flex:0 0 70%;scroll-snap-align:center;position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;background:#dde8f5}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 10px;font-size:13px;font-weight:700;color:#fff;
+  background:linear-gradient(transparent,rgba(5,20,45,.85))}
+
+.share{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin-top:12px}
+.qr{width:118px;height:118px;padding:8px;border-radius:14px;background:#fff;border:1px solid var(--line)}
+.qr svg{width:100%;height:100%;display:block}
+.share p{font-size:14px;color:var(--muted);line-height:1.4}
+.btns{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.mini{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);
+  background:#f5f9ff;font:700 14px var(--sans);color:var(--navy);cursor:pointer}
+.mini svg{width:16px;height:16px;color:var(--blue)}
+
+footer{margin-top:26px;padding-bottom:70px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6}
+footer b{display:block;font-size:16px;color:var(--navy)}
+
+.float{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));z-index:6;width:58px;height:58px;
+  border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(37,211,102,.5);transform:scale(0);transition:transform .25s}
+.float.on{transform:scale(1)}
+.float svg{width:30px;height:30px}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);opacity:0;z-index:7;
+  background:var(--navy);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;transition:.25s}
+.toast.on{opacity:1;transform:translateX(-50%)}
+dialog{border:0;padding:0;background:transparent;max-width:min(92vw,520px);margin:auto}
+dialog::backdrop{background:rgba(5,20,45,.85)}
+dialog img{width:100%;border-radius:14px;display:block}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<main class="card" id="unit">
+  <div class="ac">
+    <div class="ac-body">
+      <div class="ac-brand"><img src="img/logo.jpg" alt="" width="42" height="42"><div><b>JORGE</b><small>SERVICIOS INTEGRADOS</small></div></div>
+      <div class="disp" aria-live="polite"><span id="temp">32</span><sup>°C</sup></div>
+      <span class="led"></span>
+    </div>
+    <div class="flap"></div>
+    <svg class="air" viewBox="0 0 360 120" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="airg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#19b4e6" stop-opacity=".9"/><stop offset="1" stop-color="#19b4e6" stop-opacity="0"/></linearGradient></defs>
+      <path d="M40 4 C 30 40, 60 70, 30 116"/><path d="M90 4 C 80 44, 110 74, 84 116"/><path d="M140 4 C 132 40, 160 80, 140 116"/>
+      <path d="M190 4 C 182 44, 210 70, 192 116"/><path d="M240 4 C 232 40, 262 76, 246 116"/><path d="M290 4 C 282 42, 312 70, 300 116"/>
+      <path d="M330 4 C 324 40, 350 80, 344 116"/>
+    </svg>
+    <button class="remote" id="power" type="button" aria-pressed="false">
+      <span class="pw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></span>
+      <span id="pwlabel">Préndelo</span>
+    </button>
+  </div>
+
+  <header class="id">
+    <p class="kicker">Refrigeración · Línea blanca · A/C</p>
+    <h1>Jorge <span>Servicios Integrados</span></h1>
+    <p class="lead">La solución para tu hogar, negocio y oficina.</p>
+    <div class="chips">
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>A domicilio</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Monterrey, N.L.</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>Desde 2010</span>
+    </div>
+  </header>
+
+  <a class="cta" id="cta" href="https://wa.me/{{WA}}?text={{WA_MSG}}" target="_blank" rel="noopener">
+    <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></span>
+    <span><b>Agenda tu servicio</b><small>WhatsApp · {{TEL_SHOW}}</small></span>
+    <span class="go">›</span>
+  </a>
+
+  <nav class="pads" aria-label="Contacto y redes">
+    <a class="pad" href="tel:{{TEL}}"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span><b>Llamar</b><small>Directo</small></span></a>
+    <a class="pad" href="{{FB}}" target="_blank" rel="noopener"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span><span><b>Facebook</b><small>Mis trabajos</small></span></a>
+    <a class="pad" href="{{MSGR}}" target="_blank" rel="noopener"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span><b>Messenger</b><small>Escríbeme</small></span></a>
+    <a class="pad" href="contacto.vcf" download="Jorge-Servicios-Integrados.vcf"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span><span><b>Guardar</b><small>En tu agenda</small></span></a>
+  </nav>
+
+  <section class="panel">
+    <h2>¿Qué te reparo?</h2>
+    <p class="sub">Mantenimiento y reparación, en tu domicilio o negocio.</p>
+    <div class="svc">
+      <div><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="16" height="28" rx="3"/><line x1="8" y1="12" x2="24" y2="12"/><line x1="11" y1="6" x2="11" y2="9"/><line x1="11" y1="15" x2="11" y2="20"/></svg><b>Refrigeradores</b><small>No enfría, hace hielo, fugas</small></div>
+      <div><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="22" height="26" rx="3"/><line x1="5" y1="9" x2="27" y2="9"/><circle cx="16" cy="19" r="6"/><path d="M12.5 19.5c1.5-1.5 3 1 4.5-.5s3 1 4 0"/><circle cx="9" cy="6" r=".8" fill="currentColor"/></svg><b>Lavadoras</b><small>No centrifuga, no drena</small></div>
+      <div><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="22" height="26" rx="3"/><line x1="5" y1="9" x2="27" y2="9"/><circle cx="16" cy="19" r="6"/><path d="M14 16.5c0 2 2 2 2 4M18 16.5c0 2-2 2-2 4"/><line x1="20" y1="6" x2="24" y2="6"/></svg><b>Secadoras</b><small>No calienta, no gira</small></div>
+      <div><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="26" height="10" rx="3"/><line x1="7" y1="13" x2="25" y2="13"/><path d="M9 20c-1 2 1 3 0 6M16 20c-1 2 1 3 0 6M23 20c-1 2 1 3 0 6"/></svg><b>Minisplits y A/C</b><small>Carga de gas, fugas, instalación</small></div>
+      <div><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="24" height="26" rx="2"/><line x1="4" y1="11" x2="28" y2="11"/><line x1="4" y1="19" x2="28" y2="19"/><line x1="16" y1="3" x2="16" y2="29"/><line x1="8" y1="6" x2="11" y2="9"/></svg><b>Vitrinas</b><small>Refresqueras y exhibidores</small></div>
+      <div><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4l9-1 9 1v24H7z"/><line x1="7" y1="28" x2="25" y2="28"/><path d="M16 9v10M11.7 11.5l8.6 5M20.3 11.5l-8.6 5"/><line x1="21" y1="22" x2="21" y2="25"/></svg><b>Cámaras de refrigeración</b><small>Para negocio</small></div>
+      <div class="wide"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4l10 5v12l-10 5-10-5V9z"/><path d="M6 9l10 5 10-5M16 14v12"/></svg><span><b>Fábricas de hielo</b><small>Diagnóstico y reparación para negocio</small></span></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Marcas que atiendo</h2>
+    <div class="brands"><span>Whirlpool</span><span>Mabe</span><span>Samsung</span><span>LG</span><span>Daewoo</span><span>Bluepoint</span><span>y más</span></div>
+  </section>
+
+  <section class="panel">
+    <h2>Trabajos recientes</h2>
+    <p class="sub">Fotos reales de servicios en Monterrey.</p>
+    <div class="gal">
+      <figure><img src="img/condensadora.jpg" alt="Condensadora de aire central reparada" loading="lazy"><figcaption>Condensadora lista: se localizó y reparó la fuga</figcaption></figure>
+      <figure><img src="img/minisplit.jpg" alt="Jorge dando servicio a un minisplit con manómetros" loading="lazy"><figcaption>Servicio a minisplit con bomba de vacío</figcaption></figure>
+      <figure><img src="img/hielo.jpg" alt="Reparación de fábrica de hielo" loading="lazy"><figcaption>Reparación de fábrica de hielo para negocio</figcaption></figure>
+      <figure><img src="img/azotea.jpg" alt="Minisplit en azotea con bomba de vacío" loading="lazy"><figcaption>Seguimos con un servicio más…</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Así de fácil</h2>
+    <ol class="steps">
+      <li><span><b>Escríbeme por WhatsApp</b><small>Dime qué equipo es, la marca y qué falla tiene.</small></span></li>
+      <li><span><b>Voy a tu domicilio</b><small>Reviso el equipo y te digo qué tiene antes de repararlo.</small></span></li>
+      <li><span><b>Queda funcionando</b><small>En tu casa, negocio u oficina.</small></span></li>
+    </ol>
+  </section>
+
+  <section class="panel">
+    <h2>Compártela</h2>
+    <div class="share">
+      <div class="qr" aria-label="Código QR de esta tarjeta">{{QR}}</div>
+      <div>
+        <p>¿A alguien se le descompuso algo? Pásale esta tarjeta.</p>
+        <div class="btns">
+          <button class="mini" id="share" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>Compartir tarjeta</button>
+          <a class="mini" href="Jorge-Servicios-Integrados.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Descargar PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <b>Jorge Servicios Integrados</b>
+    Refrigeración, línea blanca y aire acondicionado · Monterrey, N.L.
+  </footer>
+</main>
+
+<a class="float" id="float" href="https://wa.me/{{WA}}?text={{WA_MSG}}" target="_blank" rel="noopener" aria-label="Agendar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+</a>
+<div class="toast" id="toast"></div>
+<dialog id="lb"><img alt=""></dialog>
+
+<script src="js/frio.js"></script>
+<script>
+(function(){
+  var snow = Frio(document.getElementById('snow'));
+  var unit = document.getElementById('unit'), btn = document.getElementById('power');
+  var tempEl = document.getElementById('temp'), label = document.getElementById('pwlabel');
+  var temp = 32, goal = 32, on = false, timer, ac;
+
+  function tick(){
+    if (temp === goal) { clearInterval(timer); timer = null; return; }
+    temp += temp > goal ? -1 : 1; tempEl.textContent = temp;
+    unit.classList.toggle('hot', temp >= 28);
+  }
+  function beep(n){
+    try {
+      ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+      if (ac.state === 'suspended') ac.resume();
+      for (var i = 0; i < n; i++) {
+        var t = ac.currentTime + 0.03 + i * 0.13, o = ac.createOscillator(), g = ac.createGain();
+        o.type = 'sine'; o.frequency.value = 2650;
+        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.12, t + 0.005);
+        g.gain.setValueAtTime(0.12, t + 0.07); g.gain.linearRampToValueAtTime(0, t + 0.08);
+        o.connect(g).connect(ac.destination); o.start(t); o.stop(t + 0.1);
+      }
+    } catch (e) {}
+  }
+  function setOn(v){
+    on = v; unit.classList.toggle('on', on); snow.set(on);
+    btn.setAttribute('aria-pressed', on); label.textContent = on ? 'Apágalo' : 'Préndelo';
+    goal = on ? 18 : 32; if (!timer) timer = setInterval(tick, on ? 110 : 160);
+    if (navigator.vibrate) navigator.vibrate(on ? [20, 60, 20] : 20);
+  }
+  unit.classList.add('hot');
+  btn.addEventListener('click', function(){ beep(on ? 1 : 2); setOn(!on); });
+  setTimeout(function(){ if (!on) setOn(true); }, 1200);
+
+  var cta = document.getElementById('cta'), fl = document.getElementById('float');
+  function onScroll(){ fl.classList.toggle('on', cta.getBoundingClientRect().bottom < 0); }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  var toast = document.getElementById('toast');
+  function say(m){ toast.textContent = m; toast.classList.add('on'); setTimeout(function(){ toast.classList.remove('on'); }, 2200); }
+  document.getElementById('share').addEventListener('click', function(){
+    var data = {title:'Jorge Servicios Integrados', text:'Reparación de refrigeradores, lavadoras, minisplits y más, a domicilio ❄️🔧', url:'{{URL}}'};
+    if (navigator.share) navigator.share(data).catch(function(){});
+    else if (navigator.clipboard) navigator.clipboard.writeText(data.url).then(function(){ say('Link copiado ✔'); });
+  });
+
+  var lb = document.getElementById('lb');
+  document.querySelectorAll('.gal img').forEach(function(im){
+    im.addEventListener('click', function(){ lb.querySelector('img').src = im.src; lb.showModal(); });
+  });
+  lb.addEventListener('click', function(){ lb.close(); });
+})();
+</script>
+</body>
+</html>
